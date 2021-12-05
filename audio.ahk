@@ -14,39 +14,39 @@ Join(sep, params*) {
 ; Attempt to activate a sound device by a substring of its name, from provided array
 SetSound(devices*)
 {
-	dev := ""
-	for index,device in devices {
-		SplashTextOn, , , Switching to %device%
-		RunWait, "C:\tools\bin\setsound.bat" %device%, , Min UseErrorLevel
-		if (ErrorLevel = 0) {
-			dev = %device%
-			break
-		}
-	}
+    dev := ""
+    for index,device in devices {
+        SplashTextOn, , , Switching to %device%
+        RunWait, "C:\tools\bin\setsound.bat" %device%, , Min UseErrorLevel
+        if (ErrorLevel = 0) {
+            dev = %device%
+            break
+        }
+    }
 
-	if (StrLen(dev) > 0) {
-		msg := "Audio out: " . dev
-		SplashTextOn,,, %msg%
-		SoundBeep, 350, 100
-		Sleep 200
-		SoundBeep, 350, 100
-		Sleep 500
-		SplashTextOff
-		return %dev%
-	} else {
-		msg := "❗Audio out failed for: """ . Join(""", """, devices*) . """"
-		SplashTextOn, 600, , %msg%
-		Sleep 1500
-		SplashTextOff
-		return Error
-	}
+    if (StrLen(dev) > 0) {
+        msg := "Audio out: " . dev
+        SplashTextOn,,, %msg%
+        SoundBeep, 350, 100
+        Sleep 200
+        SoundBeep, 350, 100
+        Sleep 500
+        SplashTextOff
+        return %dev%
+    } else {
+        msg := "❗Audio out failed for: """ . Join(""", """, devices*) . """"
+        SplashTextOn, 600, , %msg%
+        Sleep 1500
+        SplashTextOff
+        return Error
+    }
 }
 
 mapped_devices := [
-	["Desk"], 				; Desk speakers
-	["Yeti"), 				; Blue Yeti headphone out
-	["RX", "Philips"],		; Yamaha RX-767 or Philips TV 
-	["Headphones"]			; Bose QC35 
+    ["Desk"],               ; Desk speakers
+    ["Yeti"),               ; Blue Yeti headphone out
+    ["RX", "Philips"],      ; Yamaha RX-767 or Philips TV 
+    ["Headphones"]          ; Bose QC35 
 )
 ; TODO: Generate hotkey triggers
 
