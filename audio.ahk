@@ -42,12 +42,6 @@ SetSound(devices*)
     }
 }
 
-mapped_devices := [
-    ["Desk"],               ; Desk speakers
-    ["Yeti"),               ; Blue Yeti headphone out
-    ["RX", "Philips"],      ; Yamaha RX-767 or Philips TV 
-    ["Headphones"]          ; Bose QC35 
-)
 ; TODO: Generate hotkey triggers
 
 ; Sound device: Desk speakers
@@ -67,6 +61,6 @@ return
 
 ; Sound device: Bose QuietComfort 35
 ^+F4::
-SetSound("Headphones")
+SetSound("QuietComfort 35")
 return
 
